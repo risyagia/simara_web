@@ -1,18 +1,19 @@
 <?php
-session_start();
+// Memeriksa apakah session sudah dimulai
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-// membuat koneksi ke table
+// Membuat koneksi ke database
 $host = "localhost";
 $username = "root";
 $password = "";
 $db = "projek_kua";
 
-$koneksi = mysqli_connect("localhost", "root", "", "projek_kua");
+$koneksi = mysqli_connect($host, $username, $password, $db);
 
-if(mysqli_connect_error()) {
-    die("Koenksi Gatot :". mysqli_connect_error());
-}else {
-    echo " koneksi berhasil";
+// Mengecek koneksi, apakah gagal
+if(!$koneksi) {
+    die("Koneksi Gagal: " . mysqli_connect_error());
 }
-
 ?>
