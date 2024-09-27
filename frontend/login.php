@@ -12,16 +12,13 @@ if (isset($_POST['login'])) {
 $cekdata = mysqli_query($koneksi, "SELECT * FROM login where username='$username' AND password='$password'");    
     if ($hitung > 0) {
       $_SESSION['log'] = 'True';
-        header('location:beranda.php');
+        header('location:dashboard.php');
     } else {
         header('location:login.php');
     };
 };
 
-if(!isset($_SESSION['log'])) {
 
-} else{ header('location: beranda.php');
-}
 
 ?>
 
@@ -39,7 +36,7 @@ if(!isset($_SESSION['log'])) {
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
 			rel="stylesheet" />
 			<link rel="shortcut icon" href="img/simara.png" type="image/x-icon">
-		<link rel="stylesheet"href="style.css" />
+		<link rel="stylesheet"href="css/style.css" />
 	</head>
 	<body>
 		<div class="container">
