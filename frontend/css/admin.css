@@ -1,0 +1,311 @@
+                                        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+                                        * {
+                                            font-family: "Roboto", sans-serif;
+                                            margin: 0;
+                                            padding: 0;
+                                            box-sizing: border-box;
+                                        }
+                                        
+                                         :root {
+                                            --blue: #2a2185;
+                                            --white: #fff;
+                                            --grey: #f5f5f5;
+                                            --black1: #222;
+                                            --black2: #999;
+                                            --warna-kuning: #F3CD00;
+                                            --warna-hijau: #31502C;
+                                        }
+                                        
+                                        body {
+                                            height: 100vh;
+                                            overflow-x: hidden;
+                                        }
+                                        
+                                        .container {
+                                            position: relative;
+                                            width: 100%;
+                                        }
+                                        /* navigation */
+                                        
+                                        .navigation {
+                                            position: fixed;
+                                            width: 300px;
+                                            height: 100%;
+                                            background: var(--warna-hijau);
+                                            transition: 0.5s;
+                                            overflow: hidden;
+                                        }
+                                        
+                                        .navigation.active {
+                                            width: 80px;
+                                        }
+                                        
+                                        .navigation ul {
+                                            position: absolute;
+                                            top: 0;
+                                            width: 100%;
+                                        }
+                                        
+                                        .navigation ul li {
+                                            position: relative;
+                                            width: 100%;
+                                            list-style: none;
+                                            padding-left: 10px;
+                                        }
+                                        
+                                        .navigation ul li:hover,
+                                        .navigation ul li.hovered {
+                                            background-color: var(--white);
+                                        }
+                                        
+                                        .navigation ul li:nth-child(1) {
+                                            margin-bottom: 40px;
+                                            pointer-events: none;
+                                        }
+                                        
+                                        .navigation ul li a {
+                                            position: relative;
+                                            display: block;
+                                            width: 100%;
+                                            display: flex;
+                                            text-decoration: none;
+                                            color: var(--white);
+                                        }
+                                        
+                                        .navigation ul li:hover a,
+                                        .navigation ul li.hovered a {
+                                            color: var(--warna-hijau);
+                                        }
+                                        
+                                        .navigation ul li a .icon {
+                                            position: relative;
+                                            display: block;
+                                            min-width: 60px;
+                                            height: 60px;
+                                            line-height: 75px;
+                                            text-align: center;
+                                        }
+                                        
+                                        .navigation ul li a .icon ion-icon {
+                                            font-size: 1.75rem;
+                                        }
+                                        
+                                        .navigation ul li a .title {
+                                            position: relative;
+                                            display: block;
+                                            padding: 0 10px;
+                                            height: 60px;
+                                            line-height: 60px;
+                                            text-align: start;
+                                            white-space: nowrap;
+                                        }
+                                        
+                                        .title {
+                                            font-size: 14px;
+                                        }
+                                        
+                                        .header {
+                                            font-size: 20px;
+                                            height: 60px;
+                                            line-height: 60px;
+                                            color: var(--warna-kuning);
+                                            font-weight: 400;
+                                            width: 10rem;
+                                            margin-top: 5px;
+                                            font-family: "Poppins", sans-serif;
+                                            padding-left: 1.4rem;
+                                        }
+                                        
+                                        .judul img {
+                                            width: 35px;
+                                            position: absolute;
+                                            margin-top: -1rem;
+                                            left: 7%;
+                                        }
+                                        
+                                        .judul h1 {
+                                            font-size: 20px;
+                                            position: absolute;
+                                            left: 10%;
+                                            margin-top: -13px;
+                                            margin-left: 1rem;
+                                            color: var(--warna-hijau);
+                                            font-family: "Poppins", sans-serif;
+                                        }
+                                        /* === main ====== */
+                                        
+                                        .main {
+                                            position: absolute;
+                                            width: calc(100% - 300px);
+                                            left: 300px;
+                                            min-height: 100vh;
+                                            background: var(--white);
+                                            transition: 0.5s;
+                                        }
+                                        
+                                        .main.active {
+                                            width: calc(100% - 80px);
+                                            left: 80px;
+                                        }
+                                        
+                                        .topbar {
+                                            width: 100%;
+                                            height: 60px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            padding: 0 10px;
+                                        }
+                                        
+                                        .toggle {
+                                            position: relative;
+                                            width: 60px;
+                                            height: 60px;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            font-size: 2.5rem;
+                                            cursor: pointer;
+                                        }
+                                        /* ========= Card Box ========== */
+                                        
+                                        .cardBox {
+                                            position: relative;
+                                            width: 100%;
+                                            padding: 20px;
+                                            display: grid;
+                                            grid-template-columns: repeat(4, 1fr);
+                                            grid-gap: 30px;
+                                        }
+                                        
+                                        .cardBox .card {
+                                            position: relative;
+                                            background: var(--white);
+                                            padding: 30px;
+                                            border-radius: 20px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            cursor: pointer;
+                                            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+                                            height: 8rem;
+                                        }
+                                        
+                                        .cardBox .card .number {
+                                            position: relative;
+                                            font-weight: 500;
+                                            font-size: 2.5rem;
+                                            color: var(--warna-kuning);
+                                        }
+                                        
+                                        .cardBox .card .cardName {
+                                            color: var(--warna-hijau);
+                                            font-size: 1.1rem;
+                                            margin-top: 5px;
+                                            font-weight: 600;
+                                            font-family: "poppins", sans-serif;
+                                            position: absolute;
+                                        }
+                                        
+                                        .cardBox .card .iconBox {
+                                            font-size: 2rem;
+                                            color: var(--black2);
+                                            height: fit-content;
+                                        }
+                                        
+                                        .cardBox .card:hover {
+                                            transform: scale(1.05);
+                                        }
+                                        
+                                        .details {
+                                            position: relative;
+                                            width: 100%;
+                                            padding: 20px;
+                                            display: grid;
+                                            grid-template-columns: 1fr 1fr;
+                                            grid-gap: 30px;
+                                            margin-top: 10px;
+                                        }
+                                        
+                                        .details .chart1 {
+                                            position: relative;
+                                            display: grid;
+                                            min-height: 300px;
+                                            background: var(--white);
+                                            padding: 20px;
+                                            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+                                            border-radius: 20px;
+                                        }
+                                        
+                                        canvas {
+                                            width: 100%;
+                                            height: 400px;
+                                        }
+                                        
+                                        .chart2 {
+                                            position: relative;
+                                            display: grid;
+                                            min-height: 300px;
+                                            padding: 20px;
+                                            background: var(--white);
+                                            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+                                            border-radius: 20px;
+                                        }
+                                        
+                                        @media (max-width: 991px) {
+                                            .navigation {
+                                                left: -300px;
+                                            }
+                                            .navigation.active {
+                                                width: 300px;
+                                                left: 0;
+                                            }
+                                            .main {
+                                                width: 100%;
+                                                left: 0;
+                                            }
+                                            .main.active {
+                                                left: 300px;
+                                            }
+                                            .cardBox {
+                                                grid-template-columns: repeat(2, 1fr);
+                                            }
+                                        }
+                                        
+                                        @media (max-width: 768px) {
+                                            .details {
+                                                grid-template-columns: 1fr;
+                                            }
+                                            .chart1 {
+                                                overflow: auto;
+                                            }
+                                        }
+                                        
+                                        @media (max-width: 480px) {
+                                            .cardBox {
+                                                grid-template-columns: repeat(1, 1fr);
+                                            }
+                                            .cardHeader h2 {
+                                                font-size: 20px;
+                                            }
+                                            .user {
+                                                min-width: 40px;
+                                            }
+                                            .navigation {
+                                                width: 100%;
+                                                left: -100%;
+                                                z-index: 1000;
+                                            }
+                                            .navigation.active {
+                                                width: 100%;
+                                                left: 0;
+                                            }
+                                            .toggle {
+                                                z-index: 10001;
+                                            }
+                                            .main.active .toggle {
+                                                color: #ffff;
+                                                position: fixed;
+                                                right: 0;
+                                                left: initiald;
+                                            }
+                                        }

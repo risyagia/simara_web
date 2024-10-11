@@ -1,5 +1,9 @@
 <?php 
 include_once '../backend/function.php';
+
+$session_limit = 30 * 60;
+
+
 // proses_login
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
@@ -9,9 +13,11 @@ if (isset($_POST['login'])) {
     $cekdatabase = mysqli_query($koneksi, "SELECT * FROM login WHERE username='$username' AND password='$password'");
     //kemudian hitung apakah ada di database di tabel login dari si ursename dan password yang cocok
     $hitung = mysqli_num_rows($cekdatabase);
-$cekdata = mysqli_query($koneksi, "SELECT * FROM login where username='$username' AND password='$password'");    
+    $cekdata = mysqli_query($koneksi, "SELECT * FROM login where username='$username' AND password='$password'");    
     if ($hitung > 0) {
       $_SESSION['log'] = 'True';
+      $_SESSION['username'] = '$username';
+      $_SESSION['login_time'] = time();
         header('location:dashboard.php');
     } else {
         header('location:login.php');
@@ -36,7 +42,7 @@ $cekdata = mysqli_query($koneksi, "SELECT * FROM login where username='$username
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
 			rel="stylesheet" />
 			<link rel="shortcut icon" href="img/simara.png" type="image/x-icon">
-		<link rel="stylesheet"href="css/style.css" />
+		<link rel="stylesheet"href="css/login.css" />
 	</head>
 	<body>
 		<div class="container">
@@ -47,14 +53,18 @@ $cekdata = mysqli_query($koneksi, "SELECT * FROM login where username='$username
 						alt="Logo"
 						class="logo" />
 					<h1>Sistem Manajemen Data Religi & Agama</h1>
-					<form id="loginForm" method="post">
+					<?php if (isset($_GET['session_expired'])): ?>
+        <p>Sesi Anda telah berakhir. Silakan login kembali.</p>
+         <?php endif; ?>
+
+					<form id="loginForm" method="post" autocomplete="off">
 						<h4>Email Atau No Telepon</h4>
 						<div class="input-box">
-							<input id="username"name="username"type="text"placeholder="Masukan Username"required />
+							<input id="username"name="username"type="text"placeholder="Masukan Username"required autocomplete="off"/>
 						</div>
 						<h4>Kata Sandi</h4>
 						<div class="input-box">
-							<input id="password"name="password" type="password"placeholder="Masukkan Kata Sandi" required />
+							<input id="password"name="password" type="password"placeholder="Masukkan Kata Sandi" required autocomplete="off" />
 							<span class="password-icon"></span>
 						</div>
 						<button id="submitButton" name="login" type="submit"class="login-btn" >Masuk</button>

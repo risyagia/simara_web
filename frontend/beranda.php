@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda</title>
-    <link rel="stylesheet" href="berandaa.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-</head>
+    <link rel="shortcut icon" href="img/simara.png" type="image/x-icon">
 
+</head>
 <body>
     <div class="header">
         <img src="img/simara.svg" width="45px" height="45px">
@@ -25,7 +26,7 @@
                 <div class="dropdown-content">
                     <a href="#" id="link">Suscatin</a>
                     <a href="#" id="link">Wakaf</a>
-                    <a href="#" id="link">Tempat Ibadah</a>
+                    <a href="tempat_ibadah.php" id="link">Tempat Ibadah</a>
                     <a href="#" id="link">Madrasah</a>
                 </div>
             </div>
@@ -41,12 +42,13 @@
             <h1>Kantor Urusan Agama Kecamatan Karawang Barat</h1><br>
             <p>Senin - Jumat 07.30 s/d 16.00</p>
         </div>
-        <div class="kunjungi">
-            <p style="font-size: medium;"><a href="https://maps.app.goo.gl/T1r7P6KLZvJ2NZLx7" target="_blank">Kunjungi</a></p>
-            <a href="https://maps.app.goo.gl/T1r7P6KLZvJ2NZLx7" target="_blank">
-                <img src="img/kunjungi icon.svg" width="17px" height="17px">
-            </a>
-        </div>
+        <div class="kunjungi"  style="cursor: pointer;" onclick="window.open('https://maps.app.goo.gl/T1r7P6KLZvJ2NZLx7', '_blank')">
+    <a>
+        Kunjungi
+        <img src="img/kunjungi icon.svg" width="17px" height="17px" alt="Icon">
+    </a>
+</div>
+
     </div>
     <div class="angka_pernikahan">
         <div class="pernikahan">
@@ -73,7 +75,8 @@
             <div class="tempat_ibadah_desk">
                 <img src="img/tempat ibadah icon.svg" style="position: absolute; top: -22%; left: 70%; ">
                 <span style="color: #3B3E51; opacity: 60%; font-size: 13px; ">KUA PUSAKA</span>
-                <h3>Tempat Ibadah</h3>
+              <h3 >Tempat Ibadah</h3>
+
                 <p>List data tempat atau fasilitas Keagamaan antar umat beragama di Kecamatan Karawang Barat</p>
             </div>
         </div>

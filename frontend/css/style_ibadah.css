@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#tempat-ibadah {
+  flex: 1;
+  min-height: 400px;
+}
+
+:root {
+  --warna-kuning: #f3cd00;
+  --warna-hijau: #31502c;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 8.125rem;
+  padding-right: 8.125rem;
+  width: 100%;
+  height: 4.75rem;
+  background-color: var(--warna-hijau);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.575);
+  z-index: 10;
+}
+
+.header h3 {
+  margin-left: 60px;
+  margin-top: -3.4rem;
+  color: var(--warna-kuning);
+  font-weight: 500;
+}
+
+.header p {
+  margin-left: 60px;
+  margin-top: -3px;
+  color: white;
+  font-size: small;
+}
+
+.header img {
+  margin-top: 15px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.navbar {
+  float: right;
+  margin-top: -35px;
+  margin-right: 130px;
+  list-style-type: none;
+  display: flex;
+}
+
+.navbar #li {
+  color: white;
+  padding: 0px 20px;
+  text-decoration: none;
+  position: relative;
+  z-index: 5;
+}
+
+.navbar #li::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: var(--warna-kuning);
+  bottom: -3px;
+  left: 18%;
+  border-radius: 4px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar #li:hover::before {
+  width: 65%;
+}
+
+.navbar #li:hover {
+  color: var(--warna-kuning);
+}
+
+.login_staff {
+  float: right;
+  position: relative;
+  margin-top: -37px;
+  right: 2%;
+  background-color: var(--warna-kuning);
+  width: 94px;
+  height: 30px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.login_staff a {
+  color: var(--warna-hijau);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+
+.dropdown-btn {
+  cursor: pointer;
+}
+
+/* Dropdown content (disembunyikan secara default) */
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--warna-hijau);
+  min-width: 160px;
+  z-index: 1;
+  top: 25px;
+  left: 7px;
+  padding-top: 15px;
+}
+
+/* Style untuk link dalam dropdown */
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Menampilkan dropdown saat di-hover */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content #link:hover {
+  color: var(--warna-hijau);
+  background-color: white;
+}
+
+.banner {
+  padding-left: 8.125rem;
+  padding-right: 8.125rem;
+  margin-top: 4.75rem;
+  padding-top: 70px;
+}
+
+.banner h1 {
+  font-family: "Varela Round", sans-serif;
+  color: var(--warna-hijau);
+  margin-top: -17rem;
+}
+
+.search-input {
+  width: 469px;
+  height: 50px;
+  border-radius: 20px;
+  margin-top: 3rem;
+  border: none;
+  box-shadow: 4px 5px 17px rgba(0, 0, 0, 0.432);
+  padding-left: 51px;
+  padding-right: 20px;
+  outline: none;
+}
+
+.search-input:focus {
+  box-shadow: 4px 5px 17px rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--warna-kuning);
+  background-color: #f0f8ff;
+}
+
+.filter {
+  position: sticky; /* Tetap berada di tempat saat halaman digulir */
+  top: 0; /* Jarak dari atas halaman */
+  padding: 10px;
+  display: flex;
+  gap: 25px;
+  border-bottom: 1px solid #ddd; /* Garis bawah */
+}
+
+.filter button {
+  padding: 5px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  background-color: #e6e6e8;
+  margin-top: 2rem;
+}
+
+.filter button:focus {
+  background-color: var(--warna-hijau);
+  color: white;
+}
+
+.tempat-ibadah-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 20px;
+}
+
+.tempat-ibadah-box {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  gap: 30px;
+}
+
+.tempat-ibadah-box:hover {
+  transform: scale(1.05);
+}
+
+.place-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.info {
+  padding: 15px;
+}
+
+.place-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.place-address,
+.place-type {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.place-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.place-icon img {
+  width: 40px;
+  height: 40px;
+}
+footer {
+  height: 426px;
+  background-color: var(--warna-hijau);
+  padding-left: 8.125rem;
+  padding-right: 8.125rem;
+  display: flex;
+}
+
+footer ul {
+  font-weight: 200;
+}
+
+.footer_kanan {
+  width: 477px;
+  color: white;
+  padding-top: 70px;
+}
+
+.footer_kanan p {
+  padding-top: 15px;
+  font-weight: 200;
+}
+
+.footer_kiri {
+  display: flex;
+  gap: 30px;
+  color: white;
+  margin-top: 80px;
+}
+
+.footer_kiri h3 {
+  font-weight: 600;
+}
