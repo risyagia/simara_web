@@ -4,7 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Membuat koneksi ke database
 $host = "localhost";
 $username = "root";
 $password = "";

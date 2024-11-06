@@ -9,6 +9,7 @@ if ($filter) {
 }
 
 $result = $mysqli->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +44,8 @@ $result = $mysqli->query($sql);
             window.location.href = 'tempat_ibadah.php?filter=' + jenis;
         }
     </script>
+
+    
 </body>
 </html>
 

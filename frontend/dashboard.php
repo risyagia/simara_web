@@ -26,19 +26,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="dashboard.php">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="form.html">
+                    <a href="pernikahan.php">
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Pernikahan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="tempat_ibadah.php">
                         <span class="icon"><ion-icon name="moon-outline"></ion-icon></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>

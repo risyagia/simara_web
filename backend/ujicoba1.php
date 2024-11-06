@@ -20,6 +20,7 @@
         <option value="Klenteng">Klenteng</option>
         <option value="Vihara">Vihara</option>
     </select>
+    <button></button>
 
     <label for="foto">Upload Foto:</label>
     <input type="file" name="foto" id="foto" required>
