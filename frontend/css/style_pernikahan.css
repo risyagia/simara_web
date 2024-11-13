@@ -240,11 +240,11 @@
     }
     
     .table tr th:first-child {
-        border-top-left-radius: 15px;
+        border-top-left-radius: 10px;
     }
     
     .table tr th:last-child {
-        border-top-right-radius: 15px;
+        border-top-right-radius: 10px;
     }
     
     table {
@@ -258,6 +258,7 @@
         padding: 10px 0;
         text-align: center;
         font-family: 'poppins', sans-serif;
+        font-size: smaller;
     }
     
     .icon-delete {
