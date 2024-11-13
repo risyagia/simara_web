@@ -27,9 +27,9 @@ $result = $mysqli->query($sql);
     <style>
    .tempat-ibadah-box {
     display: flex;
-    flex-direction: column; /* Mengatur elemen di dalamnya agar vertikal */
+    flex-direction: column; 
     margin: 0 auto;
-    align-items: center; /* Menjaga elemen tetap di tengah secara horizontal */
+    align-items: center; 
     text-align: center; 
     margin-bottom: 5px; 
     width: 20rem;
