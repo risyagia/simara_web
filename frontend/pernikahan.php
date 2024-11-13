@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="tempat_ibadah.php">
                         <span class="icon"><span class="iconify" data-icon="carbon:worship-muslim" data-width="25" data-height="25"></span></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>
