@@ -321,7 +321,35 @@
         font-family: "Poppins", sans-serif;
         justify-content: center;
         text-align: center;
-        gap: 2rem;
+        gap: 0.3rem;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .input1.dragging {
+        background-color: #6bce5c;
+        border-color: #31502C;
+    }
+    
+    #button-foto {
+        margin-top: 0.5rem;
+        padding: 10px 20px;
+        background-color: var(--warna-hijau);
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        margin-left: 33%;
+    }
+    
+    #button-foto:hover {
+        background-color: #20361c;
+    }
+    
+    #drop-hint {
+        font-size: 14px;
+        font-style: italic;
     }
     
     .input2 {
