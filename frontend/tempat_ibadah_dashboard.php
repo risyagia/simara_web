@@ -86,21 +86,27 @@
                     <h1 style="font-size: 20PX; margin-top: 10px; color: #3B3E51; opacity: 60%; font-family: 'poppins', sans-serif; ">Menampilkan Data Semua Masjid</h1>
                     <button id="btn-tambah"><ion-icon name="add-circle-outline"></ion-icon>Tambah</button>
                 </div>
-                <!-- Modal Structure -->
+               <!-- Modal Structure -->
                 <div id="modal-popup" class="modal">
                     <div class="modal-content">
                         <div class="header-modal">
                             <span class="close-modal">&times;</span>
-                            <h2 style="color: #3B3E51; font-family: 'poppins',sans-serif;">Tambah Data Pernikahan</h2>
+                            <h2 style="color: #3B3E51; font-family: 'poppins',sans-serif;">Tambah Data Masjid</h2>
                         </div>
                         <form>
                             <br><br>
                             <div class="modal-input">
-                                <div class="input1">
-                                    <span class="iconify" data-icon="solar:upload-linear" data-width="70" style="opacity: 50%; margin-top: -2rem; position: relative;"></span><br>
+                                <div class="input1" id="input1">
+                                    <span class="iconify" data-icon="solar:upload-linear" data-width="70" style="opacity: 50%; margin-top: -1rem; position: relative; margin-left: 40%;"></span><br>
                                     <span style="color: rgb(150, 150, 150);">Seret & Lepas file disini atau klik di bawah ini</span>
-                                    <input type="file" accept="image/*" style="margin-top: 2rem;">
-                                    <span style="color: red; ">Maksimal Berukuran 1MB</span>
+                                    <button type="button" id="button-foto">Pilih File</button>
+                                    <input type="file" id="file-input" hidden accept="image/*" style="margin-top: 2rem;">
+                                    <span style="color: red; font-size: smaller;">Maksimal Berukuran 1MB</span>
+                                    <p id="drop-hint" style="display:none; color: gray; margin-top: 10px;">
+                                        Jatuhkan Foto Disini
+                                    </p>
+                                    <img id="preview" src="#" alt="Preview" style="display:none; margin-top: -13rem; width: 100px; height: 100px; object-fit: cover; border: 1px solid #ccc; border-radius: 5px; position: absolute; margin-left: 24.2rem;">
+                                    <p id="file-name" style="display:none; margin-left: 24.2rem; position: absolute; margin-top: -4rem;"></p>
                                 </div>
                                 <div class="input2 ">
                                     <label for="nama-masjid ">Nama Masjid:</label>
@@ -110,15 +116,15 @@
                                 </div>
                                 <div class="input3">
                                     <label for="desk-masjid ">Deskripsi:</label>
-                                    <input type="text " id="desk-masjid " style="height: 10rem; " required>
+                                    <textarea name="" id="desk-masjid" style="height: 10rem; width: 47rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
                                 </div>
                                 <div class="input4">
                                     <label for="kegiatan-masjid ">Kegiatan Rutin:</label>
-                                    <input type="text " id="kegiatan-masjid " style="height: 10rem; " required>
+                                    <textarea name="" id="kegiatan-masjid " style="height: 10rem; width: 24rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
                                 </div>
                                 <div class="input5">
                                     <label for="map-masjid ">Embed Map:</label>
-                                    <input type="text " id="map-masjid " style="height: 10rem; " required>
+                                    <textarea name="" id="map-masjid " style="height: 10rem; width: 22rem; border: 0.5 solid #8f8f96; border-radius: 13px; padding: 10px;" required></textarea>
                                 </div>
                             </div>
                             <div class="modal-buttons">
