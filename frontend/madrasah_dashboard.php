@@ -23,26 +23,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <span class="icon"><span class="iconify" data-icon="ion:home-outline" data-width="25" data-height="25"></span>
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="pernikahan.html">
+                    <a href="pernikahan.php">
                         <span class="icon"><span class="iconify" data-icon="carbon:partnership" data-width="25" data-height="25"></span></span>
                         <span class="title">Pernikahan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="tempat_ibadah_dashboard.html">
+                    <a href="tempat_ibadah_dashboard.php">
                         <span class="icon"><span class="iconify" data-icon="carbon:worship-muslim" data-width="25" data-height="25"></span></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>
                 </li>
                 <li>
-                    <a href="madrasah_dashboard.html">
+                    <a href="madrasah_dashboard.php">
                         <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
                         <span class="title">Madrasah</span>
                     </a>
