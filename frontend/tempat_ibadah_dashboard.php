@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="madrasah_dashboard.php">
                         <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
                         <span class="title">Madrasah</span>
                     </a>
