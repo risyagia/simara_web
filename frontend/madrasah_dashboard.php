@@ -118,16 +118,16 @@
                                     </select>
                                 </div>
                                 <div class="input3">
-                                    <label for="desk-masjid">Deskripsi:</label>
-                                    <textarea name="" id="desk-masjid" style="height: 10rem; width: 47rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
+                                    <label for="desk-madrasah">Deskripsi:</label>
+                                    <textarea name="" id="desk-madrasah" style="height: 10rem; width: 47rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
                                 </div>
                                 <div class="input4">
-                                    <label for="kegiatan-masjid ">Lokasi:</label>
-                                    <textarea name="" id="kegiatan-masjid " style="height: 10rem; width: 24rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
+                                    <label for="lokasi-madrasah ">Lokasi:</label>
+                                    <textarea name="" id="lokasi-madrasah" style="height: 10rem; width: 24rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
                                 </div>
                                 <div class="input5">
-                                    <label for="map-masjid">Embed Map:</label>
-                                    <textarea name="" id="map-masjid" style="height: 10rem; width: 22rem; border: 0.5 solid #8f8f96; border-radius: 13px; padding: 10px;" required></textarea>
+                                    <label for="map-madrasah">Embed Map:</label>
+                                    <textarea name="" id="map-madrasah" style="height: 10rem; width: 22rem; border: 0.5 solid #8f8f96; border-radius: 13px; padding: 10px;" required></textarea>
                                 </div>
                             </div>
                             <div class="modal-buttons">
