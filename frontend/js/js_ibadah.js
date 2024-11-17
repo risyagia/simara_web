@@ -119,3 +119,59 @@ if (btnHapus) {
         closeConfirmationModal(); // Tutup modal setelah menghapus
     };
 }
+const input1 = document.getElementById("input1");
+const fileInput = document.getElementById("file-input");
+const uploadBtn = document.getElementById("button-foto");
+const preview = document.getElementById("preview");
+const dropHint = document.getElementById("drop-hint");
+const fileNameDisplay = document.getElementById("file-name");
+
+input1.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    input1.classList.add("dragging");
+    dropHint.style.display = "block";
+});
+
+input1.addEventListener('dragleave', () => {
+    input1.classList.remove("dragging");
+    dropHint.style.display = "none";
+});
+
+input1.addEventListener('drop', (e) => {
+    e.preventDefault();
+    input1.classList.remove("dragging");
+    dropHint.style.display = "none";
+    const file = e.dataTransfer.files[0];
+    handleFile(file);
+});
+
+uploadBtn.addEventListener('click', () => fileInput.click());
+
+
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    handleFile(file);
+});
+
+function handleFile(file) {
+    const maxSizeMB = 1;
+    if (file) {
+        if (file.size > maxSizeMB * 1024 * 1024) {
+            alert("File hanya boleh berukuran maksimal 1 Mb.");
+            return;
+        }
+        if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+
+                fileNameDisplay.textContent = file.name;
+                fileNameDisplay.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert("Silahkan Upload Foto Disini.");
+        }
+    }
+}
