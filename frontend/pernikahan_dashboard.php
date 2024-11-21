@@ -38,7 +38,7 @@ $result = mysqli_query($koneksi, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pernikahan</title>
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style_pernikahan.css" />
+    <link rel="stylesheet" href="css/style_pernikahan_dashboard.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -218,7 +218,7 @@ $result = mysqli_query($koneksi, $query);
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="tempat_ibadah_dashboard.php">
                         <span class="icon"><span class="iconify" data-icon="carbon:worship-muslim" data-width="25" data-height="25"></span></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>
@@ -583,4 +583,12 @@ $result = mysqli_query($koneksi, $query);
 
 </body>
 
+<<<<<<< HEAD:frontend/pernikahan.php
 </html>
+=======
+</html>
+
+</html>
+
+</html>
+>>>>>>> 3835a0a8b972cf5ed20ab5fd4e4f6e78b386c75c:frontend/pernikahan_dashboard.php
