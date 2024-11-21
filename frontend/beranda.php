@@ -1,3 +1,27 @@
+<?php 
+include_once '../backend/function.php';
+
+$currentPeriod = date('Y-m'); 
+
+// Query to get the most recent pernikahan and isbat_nikah counts for the current period
+$query = "SELECT pernikahan, isbat_nikah FROM pernikahan WHERE periode = '$currentPeriod' ORDER BY id DESC LIMIT 1"; 
+$result = mysqli_query($koneksi, $query);
+
+$data = mysqli_fetch_assoc($result);
+
+// Set default values if data is not available
+$totalPernikahan = $data['pernikahan'] ?? 0; 
+$totalIsbat = $data['isbat_nikah'] ?? 0; 
+
+// Prepare response array to send as JSON
+$response = [
+    'totalPernikahan' => $totalPernikahan,
+    'totalIsbat' => $totalIsbat,
+];
+
+echo json_encode($response); // Return response as JSON
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,13 +78,17 @@
         <div class="pernikahan">
             <img src="img/nikah icon.svg" width="60px" height="60px">
             <h2>Pernikahan</h2>
-            <p><span>093/</span> Bulan ini</p>
-        </div>
+            <p>
+            <span class="jumlah" id="total-pernikahan"><?php echo str_pad($totalPernikahan, 2, '0', STR_PAD_LEFT); ?></span>
+            / Bulan ini</p>      
+          </div>
         <div class="isbat">
             <img src="img/isbat icon.svg" width="60px" height="60px">
             <h2>Isbat Nikah</h2>
-            <p><span>050/</span> Bulan ini</p>
-        </div>
+            <p>
+            <span class="jumlah" id="total-isbat"><?php echo str_pad($totalIsbat, 2, '0', STR_PAD_LEFT); ?></span>
+            / Bulan ini</p>
+            </div>
     </div>
     <div class="kategori">
         <div class="suscatin">
@@ -273,7 +301,15 @@
                 behavior: 'smooth'
             });
         }
+
+
+        //real time for value spannn 
+
+    
     </script>
+
+    <script src="js/script.js"></script>
+    
 </body>
 
 </html>

@@ -2,13 +2,14 @@
 include_once '../backend/function.php';
 
 if (isset($_POST['simpan'])) {
-    $periode = mysqli_real_escape_string($koneksi, $_POST['periode']);
+    $bulan = mysqli_real_escape_string($koneksi, $_POST['bulan']);
+    $tahun = mysqli_real_escape_string($koneksi, $_POST['tahun']);
     $pernikahan = mysqli_real_escape_string($koneksi, $_POST['pernikahan']);
     $isbat_nikah = mysqli_real_escape_string($koneksi, $_POST['isbat_nikah']);
 
     // Insert query
-    $query = "INSERT INTO pernikahan (periode, pernikahan, isbat_nikah) 
-              VALUES ('$periode', '$pernikahan', '$isbat_nikah')";
+    $query = "INSERT INTO pernikahan (bulan, tahun, pernikahan, isbat_nikah) 
+              VALUES ('$bulan', '$tahun', '$pernikahan', '$isbat_nikah')";
     
     // Execute query and check for success
     if (mysqli_query($koneksi, $query)) {
@@ -23,11 +24,9 @@ if (isset($_POST['simpan'])) {
 // Select query to retrieve data for display
 $query = "SELECT * FROM pernikahan";
 $result = mysqli_query($koneksi, $query);
-
-
-
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,63 +46,6 @@ $result = mysqli_query($koneksi, $query);
 
 
 
-
-
-
-        /* Wrapper Modal */
- /* Gaya untuk tampilan modal */
- .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Gaya konten modal */
-        .modal-content {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Gaya ikon modal */
-        .modal-icon {
-            margin-bottom: 15px;
-        }
-
-        /* Gaya tombol */
-        .modal-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .btn-batal, .btn-ya {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-        }
-
-        .btn-batal {
-            background-color: #ff3d00;
-        }
-
-        .btn-ya {
-            background-color: #4caf50;
-        }
 
 
     
@@ -189,8 +131,12 @@ $result = mysqli_query($koneksi, $query);
         color: white;
         margin-left: 10px;
       }
-    </style>
 
+
+      /* Secara default, sembunyikan navigation */
+
+
+    </style>
 </head>
 
 <body>
@@ -281,8 +227,25 @@ $result = mysqli_query($koneksi, $query);
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Tambah Data Pernikahan</h2>
         <form method="POST" action="">
-        <label for="periode">Periode:</label>
-          <input type="date" id="periode" name="periode" placeholder="YYYYMM" required />
+          <label for="bulan">Bulan:</label>
+          <select name="bulan" id="bulan" required>
+            <option value="">Pilih Bulan</option>
+            <option value="Januari">Januari</option>
+            <option value="Februari">Februari</option>
+            <option value="Maret">Maret</option>
+            <option value="April">April</option>
+            <option value="Mei">Mei</option>
+            <option value="Juni">Juni</option>
+            <option value="Juli">Juli</option>
+            <option value="Agustus">Agustus</option>
+            <option value="September">September</option>
+            <option value="Oktober">Oktober</option>
+            <option value="November">November</option>
+            <option value="Desember">Desember</option>
+          </select>
+
+          <label for="tahun">Tahun:</label>
+          <input type="number" id="tahun" name="tahun" required />
 
           <label for="pernikahan">Pernikahan:</label>
           <input type="number" id="pernikahan" name="pernikahan" required />
@@ -300,16 +263,21 @@ $result = mysqli_query($koneksi, $query);
 <!-- Modal Konfirmasi Hapus -->
 
 <!-- Modal Konfirmasi Hapus -->
-<div id="modalKonfirmasiHapus" class="modal">
-    <div class="modal-content">
-        <div class="modal-icon">
-            <ion-icon name="alert-circle" style="font-size: 80px; color: #ff3d00;"></ion-icon>
-        </div>
-        <h2>Yakin Ingin Hapus?</h2>
-        <p>Data ini akan dihapus secara permanen.</p>
-        <div class="modal-buttons">
-            <button id="btnCancelDelete" class="btn-batal">Batal</button>
-            <button id="btnConfirmDelete" class="btn-ya">Ya</button>
+<div id="modal-konfirmasi" class="modal-hapus">
+    <div class="modal-content-hapus">
+        <dotlottie-player 
+            src="https://lottie.host/bc8a120e-5ed4-4bca-a3c2-f257898c0810/sUEQGb5RuL.json" 
+            background="transparent" 
+            speed="1" 
+            style="width: 200px; height: 200px; margin: 0 auto;" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+        <h2>Yakin Hapus Data ?</h2>
+        <p>Pastikan Kembali Sebelum Hapus Data</p>
+        <div class="modal-buttons-hapus">
+            <button id="btn-hapus" onclick="deleteData()">Hapus</button>
+            <button id="btn-batal-hapus" onclick="closeDeleteModal()">Batal</button>
         </div>
     </div>
 </div>
@@ -318,7 +286,8 @@ $result = mysqli_query($koneksi, $query);
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Periode</th>
+                        <th>Bulan</th>
+                        <th>Tahun</th>
                         <th>Pernikahan</th>
                         <th>Isbat Nikah</th>
                         <th>Aksi</th>
@@ -332,12 +301,13 @@ $result = mysqli_query($koneksi, $query);
                     ?>
                     <tr>
                         <td><?php echo  $no; ?></td>
-                        <td><?php echo $row['periode']; ?></td>
+                        <td><?php echo $row['bulan']; ?></td>
+                        <td><?php echo $row['tahun']; ?></td>
                         <td><?php echo $row['pernikahan']; ?></td>
                         <td><?php echo $row['isbat_nikah']; ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $row['id'];?>"><ion-icon name="create-outline" class="icon-edit"></ion-icon></a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>"><ion-icon name="trash-outline" class="icon-delete" style="cursor: pointer;"></ion-icon></a>
+                        <ion-icon name="trash-outline" class="icon-delete" style="cursor: pointer;" onclick="showDeleteModal()"></ion-icon>
+                        <ion-icon name="create-outline" class="icon-edit"></ion-icon>
                         </td>
                     </tr>
                     <?php $no++; endwhile;?>
@@ -346,21 +316,9 @@ $result = mysqli_query($koneksi, $query);
             </div>
         </div>
     </div>
-    </div>
-       <!-- Modal Konfirmasi Hapus -->
-       <div id="modal-konfirmasi" class="modal-hapus">
-                    <div class="modal-content-hapus">
-                        <dotlottie-player src="https://lottie.host/bc8a120e-5ed4-4bca-a3c2-f257898c0810/sUEQGb5RuL.json" background="transparent" speed="1" style="width: 200px; height: 200px; margin-left: 6rem;" loop autoplay></dotlottie-player>
-                        <h2>Yakin Hapus Data ?</h2>
-                        <p>Pastikan Kembali Sebelum Hapus Data</p>
-                        <div class="modal-buttons-hapus">
-                            <button id="btn-hapus">Hapus</button>
-                            <button id="btn-batal-hapus">Batal</button>
-                        </div>
-                    </div>
-                </div>
+    
     <script>
-        // Inisialisasi chart ketika halaman selesai dimuatt
+        // Inisialisasi chart ketika halaman selesai dimuat
         window.onload = function() {
             const ctx1 = document.getElementById('barChart').getContext('2d');
             const barChart = new Chart(ctx1, {
@@ -416,7 +374,7 @@ $result = mysqli_query($koneksi, $query);
                     x: {
                         title: {
                             display: true,
-                            text: 'Periode'
+                            text: 'Bulan'
                         }
                     }
                 }
@@ -486,14 +444,17 @@ $result = mysqli_query($koneksi, $query);
     
 };
 
+      // Open modal
       document.getElementById("openModalBtn").onclick = function () {
         document.getElementById("modal").style.display = "block";
       };
 
+      // Close modal
       function closeModal() {
         document.getElementById("modal").style.display = "none";
       }
 
+      // Close the modal if clicked outside of it
       window.onclick = function (event) {
         if (event.target === document.getElementById("modal")) {
           closeModal();
@@ -501,86 +462,18 @@ $result = mysqli_query($koneksi, $query);
       };
 
 
-
-    // Elemen modal dan tombol
-    const modalKonfirmasi = document.getElementById("modalKonfirmasiHapus");
-        const btnBatalHapus = document.getElementById("btnCancelDelete");
-        const btnConfirmDelete = document.getElementById("btnConfirmDelete");
-
-        // ID data yang akan dihapus
-        let dataIdToDelete = null;
-
-        // Fungsi untuk menampilkan modal
-        function showConfirmationModal(id) {
-            dataIdToDelete = id;  // Set ID yang ingin dihapus
-            modalKonfirmasi.style.display = "flex";
-        }
-
-        // Fungsi untuk menutup modal
-        function closeConfirmationModal() {
-            modalKonfirmasi.style.display = "none";
-        }
-
-        // Event listener untuk tombol batal
-        btnBatalHapus.onclick = closeConfirmationModal;
-
-        // Event listener untuk tombol konfirmasi hapus
-        btnConfirmDelete.onclick = function () {
-            if (dataIdToDelete) {
-                // Lakukan penghapusan dengan AJAX
-                fetch(`hapus.php?id=${dataIdToDelete}`)
-                    .then(response => response.text())
-                    .then(data => {
-                        if (data.includes('Hapus Error')) {
-                            alert('Penghapusan gagal: ' + data);
-                        } else {
-                            window.location.href = 'pernikahan.php';
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-                
-                closeConfirmationModal();
-            }
-        };
-
-         // JQuery Ajaz yang menghandle submission 
-         $(document).ready(function() {
-    $('#form-pernikahan').on('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        var formData = $(this).serialize(); // Serialize the form data
-
-        $.ajax({
-            url: 'pernikahan.php', // The same page, but handling via AJAX
-            method: 'POST',
-            data: formData,
-            success: function(response) {
-                // After submission, reload data for display
-                fetchData();
-            },
-            error: function() {
-                alert('Error saving data');
-            }
-        });
-    });
-});
-
-
-
+         
     
     </script>
-
-
+ 
 
 
     <script src="js/pernikahan.js"></script>
-    <script></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-
 </body>
 
 </html>

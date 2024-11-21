@@ -10,6 +10,12 @@
   --warna-hijau: #31502c;
 }
 
+//beranda
+.jumlah {
+  font-weight: bold;
+  color: #000;
+}
+
 .header {
   position: relative;
   padding-left: 8.125rem;
