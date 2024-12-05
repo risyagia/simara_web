@@ -2,7 +2,7 @@ $(document).ready(function () {
   // Function to fetch data every 5 seconds
   function fetchData() {
     $.ajax({
-      url: "pernikahan.php", // Script to fetch the updated data
+      url: "pernikahan_dashboard.php", // Script to fetch the updated data
       method: "GET",
       dataType: "json", // Expecting JSON response
       success: function (response) {
@@ -26,7 +26,7 @@ $(document).ready(function () {
     var formData = $(this).serialize(); // Serialize the form data
 
     $.ajax({
-      url: "pernikahan.php", // Same page as the action URL
+      url: "pernikahan_dashboard.php", // Same page as the action URL
       method: "POST",
       data: formData,
       success: function (response) {

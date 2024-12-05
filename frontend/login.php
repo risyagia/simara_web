@@ -1,8 +1,6 @@
 <?php 
+session_start();
 include_once '../backend/function.php';
-
-$session_limit = 30 * 60;
-
 
 // proses_login
 if (isset($_POST['login'])) {

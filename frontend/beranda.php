@@ -303,10 +303,68 @@ echo json_encode($response); // Return response as JSON
         }
 
 
-        //real time for value spannn 
+     
+$(document).ready(function() {
+    $('#form-pernikahan').on('submit', function(e) {
+        e.preventDefault(); // Mencegah form untuk submit secara biasa
 
-    
+        var formData = $(this).serialize(); // Serialize data dari form
+
+        $.ajax({
+            url: 'beranda.php', // Kirim ke pernikahan_dashboard.php
+            method: 'POST',
+            data: formData,
+            success: function(response) {
+                // Setelah berhasil, panggil fetchData() untuk mengambil data terbaru
+                fetchData();
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat menyimpan data');
+            }
+        });
+    });
+});
+
+// Fungsi untuk mengambil data terbaru
+function fetchData() {
+    $.ajax({
+        url: 'pernikahan_dashboard.php', // File PHP untuk mengambil data terbaru
+        method: 'GET',
+        success: function(response) {
+            // Anggap response berisi JSON yang memiliki data terbaru, seperti total pernikahan dan isbat
+            var data = JSON.parse(response);
+
+            // Update angka pada halaman dengan data terbaru
+            $('#total-pernikahan').text(data.totalPernikahan);
+            $('#total-isbat').text(data.totalIsbat);
+
+            // Jalankan animasi transisi angka jika diperlukan
+            animateNumber('total-pernikahan', 0, data.totalPernikahan, 2000);
+            animateNumber('total-isbat', 0, data.totalIsbat, 2000);
+        },
+        error: function() {
+            alert('Error fetching data');
+        }
+    });
+}
+
+// Fungsi animasi untuk transisi angka
+function animateNumber(id, startValue, endValue, duration) {
+    const element = document.getElementById(id);
+    let currentValue = startValue;
+    const increment = (endValue - startValue) / (duration / 50000); // Pembagian untuk interval
+    const interval = setInterval(() => {
+        currentValue += increment;
+        if (currentValue >= endValue) {
+            clearInterval(interval); // Hentikan interval jika sudah mencapai angka akhir
+            currentValue = endValue; // Pastikan nilai akhir tercapai
+        }
+        element.textContent = Math.round(currentValue).toString().padStart(2, '0'); // Update nilai
+    }, 100); // Interval setiap 50ms
+}
+
     </script>
+
 
     <script src="js/script.js"></script>
     

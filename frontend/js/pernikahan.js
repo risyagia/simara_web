@@ -52,7 +52,7 @@ window.onload = function () {
         x: {
           title: {
             display: true,
-            text: "Bulan",
+            text: "Periode",
           },
         },
       },
