@@ -25,7 +25,7 @@
 
 .header h3 {
   margin-left: 60px;
-  margin-top: -47px;
+  margin-top: -45px;
   color: var(--warna-kuning);
   font-weight: 500;
 }
@@ -400,42 +400,60 @@
 }
 
 .pembatas {
-  background-color: var(--warna-hijau);
-  width: 100%;
-  height: 50px;
+    background-color: var(--warna-hijau);
+    width: 100%;
+    height: 50px;
+    padding-right: 8.125rem;
+}
+
+.pembatas a {
+    float: right;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    margin-top: -25px;
 }
 
 .pembatas p {
-  color: white;
-  padding-left: 8.125rem;
-  padding-top: 10px;
-  font-size: 1.2rem;
-  font-weight: 500;
+    color: white;
+    padding-left: 8.125rem;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .pembatas_2 {
-  background-color: var(--warna-hijau);
-  width: 100%;
-  height: 50px;
-  padding-right: 8.125rem;
+    background-color: var(--warna-hijau);
+    width: 100%;
+    height: 50px;
+    padding-right: 8.125rem;
 }
 
 .pembatas_2 p {
-  color: white;
-  padding-left: 8.125rem;
-  padding-top: 10px;
-  font-size: 1.2rem;
-  font-weight: 500;
+    color: white;
+    padding-left: 8.125rem;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .pembatas_2 a {
-  float: right;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  margin-top: -25px;
+    float: right;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    margin-top: -25px;
 }
 
+.pembatas_2 ion-icon {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.pembatas ion-icon {
+    font-size: 25px;
+    margin-right: 20px;
+}
 .alur_pernikahan_row1 {
   display: flex;
   gap: 1.5rem;
