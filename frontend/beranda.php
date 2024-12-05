@@ -44,7 +44,15 @@ echo json_encode($response); // Return response as JSON
         <p>Sistem Manajemen Data Religi dan Agama</p>
         <div class="navbar">
             <a href="#" id="li">Beranda</a>
-            <a href="#" id="li">Tentang</a>
+            <a href="#" id="li">Profil</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn" id="li">Edukasi</a>
+                <div class="dropdown-content">
+                    <a href="edukasi_pranikah.php" id="link">Pranikah</a>
+                    <a href="edukasi_pernikahan.php" id="link">Pernikahan</a>
+                    <a href="edukasi_wakaf.php" id="link">Wakaf</a>
+                </div>
+            </div>
             <div class="dropdown">
                 <a href="#" class="dropdown-btn" id="li">Layanan</a>
                 <div class="dropdown-content">
@@ -55,7 +63,7 @@ echo json_encode($response); // Return response as JSON
                 </div>
             </div>
             <a href="#" id="li">Program</a>
-            <a href="#" id="li">Bantuan</a>
+
         </div>
         <div class="login_staff">
             <a href="login.php">Masuk</a>
@@ -128,6 +136,7 @@ echo json_encode($response); // Return response as JSON
     </div>
     <div class="pembatas ">
         <p>Alur Pendaftaran Pernikahan</p>
+        <a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a>
     </div>
     <div class="alur_pernikahan_row1">
         <div class="langkah_1">
@@ -216,7 +225,7 @@ echo json_encode($response); // Return response as JSON
     </div>
     <div class="pembatas_2 ">
         <p>Program Kami</p>
-        <a href="">Lihat Semua</a>
+        <a href=""><a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a></a>
     </div>
     <div class="program_kami ">
         <div class="program_1 ">
