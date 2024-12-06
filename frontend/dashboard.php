@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="pernikahan.php">
+                    <a href="pernikahan_dashboard.php">
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Pernikahan</span>
                     </a>
