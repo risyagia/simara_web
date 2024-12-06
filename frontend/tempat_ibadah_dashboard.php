@@ -1,28 +1,9 @@
 <?php 
 include_once '../backend/function.php';
-if (isset($_POST['simpan'])) {
-    $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
-    $lokasi = mysqli_real_escape_string($koneksi, $_POST['lokasi']);
-    $embed_map = mysqli_real_escape_string($koneksi, $_POST['embed_map']);
-    $deskripsi_singkat = mysqli_real_escape_string($koneksi, $_POST['deskripsi_singkat']);
-    $kegiatan_rutin = mysqli_real_escape_string($koneksi, $_POST['kegiatan_rutin']);
 
-    // Insert query
-    $query = "INSERT INTO tempat_ibadah_dash (nama, lokasi, embed_map, deskripsi_singkat, kegiatan_singkat)
-              VALUES ('$nama', '$lokasi', '$embed_map', '$deskripsi_singkat', '$kegiatan_rutin')";
-    
-    // Execute query and check for success
-    if (mysqli_query($koneksi, $query)) {
-        // Redirect to the same page to prevent duplicate submissions on refresh
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit();
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($koneksi) . "');</script>";
-    }
-}
 
 // Select query to retrieve data for display
-$query = "SELECT * FROM tempat_ibadah_dash";
+$query = "SELECT * FROM tempat_ibadah_dashboard";
 $result = mysqli_query($koneksi, $query);
 
 
@@ -129,7 +110,7 @@ mysqli_close($koneksi);
             <span class="iconify" data-icon="solar:upload-linear" data-width="70" style="opacity: 50%; margin-top: -1rem; position: relative; margin-left: 40%;"></span><br>
             <span style="color: rgb(150, 150, 150);">Seret & Lepas file disini atau klik di bawah ini</span>
             <button type="button" id="button-foto">Pilih File</button>
-            <input type="file" id="file-input" name="file_input" hidden accept="image/*" style="margin-top: 2rem;">
+            <input type="file" id="file-input" name="file_path" hidden accept="image/*" style="margin-top: 2rem;">
             <span style="color: red; font-size: smaller;">Maksimal Berukuran 1MB</span>
             <p id="drop-hint" style="display:none; color: gray; margin-top: 10px;">
                 Jatuhkan Foto Disini
@@ -182,9 +163,9 @@ mysqli_close($koneksi);
                         <th>No</th>
                         <th>Nama</th>
                         <th>Lokasi</th>
-                        <th>Embed Map</th>
-                        <th>Deskripsi Singkat</th>
-                        <th>Kegiatan Rutin</th>
+                        <th>Deskripsi Masjid</th>
+                        <th>Kegiatan Masjid</th>
+                        <th>Map Masjid</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
@@ -194,11 +175,11 @@ mysqli_close($koneksi);
                     while ($row = mysqli_fetch_assoc($result)) :
                     ?>
                     <tr>
-                       <td><?php echo $row['nama'] ?></td>
-                       <td><?php echo $row['lokasi'] ?></td>
-                       <td><?php echo $row['embed_map'] ?></td>
-                       <td><?php echo $row['deskripsi_singkat'] ?></td>
-                       <td><?php echo $row['kegiatan_rutin'] ?></td>
+                       <td><?php echo $row['nama_masjid'] ?></td>
+                       <td><?php echo $row['lokasi_masjid'] ?></td>
+                       <td><?php echo $row['desk_masjid'] ?></td>
+                       <td><?php echo $row['kegiatan_masjid'] ?></td>
+                       <td><?php echo $row['map_masjid'] ?></td>
                         <td>
                           <a href=""></a>  <ion-icon name="trash-outline" class="icon-delete" style="cursor: pointer; "></ion-icon>
                            <a href=""></a> <ion-icon name="create-outline" class="icon-edit"></ion-icon>
