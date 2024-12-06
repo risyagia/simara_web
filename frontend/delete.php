@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $hapus = mysqli_query($koneksi, $queryDelete);
 
     if ($hapus) {
-        header('Location: pernikahan.php');
+        header('Location: pernikahan_dashboard.php');
         exit();
     } else {
         echo 'Hapus Error: ' . mysqli_error($koneksi);

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tempat Ibadah</title>
-    <link rel="stylesheet" href="style_ibadah.css">
+    <link rel="stylesheet" href="css/style_ibadah_dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -18,26 +18,25 @@
             <ul>
                 <li>
                     <a href="#">
-                        <span><img src="img/logo simara no title.png" width="35px" style="margin-top: 10px; margin-left: 14px;"></span>
+                        <span><img src="img/logo simara no title.png" width="35px" style="margin-top: 10px; margin-left: 15px;"></span>
                         <h1 class="header">SiMaRa</h1>
                     </a>
                 </li>
                 <li>
                     <a href="dashboard.php">
-                        <span class="icon"><span class="iconify" data-icon="ion:home-outline" data-width="25" data-height="25"></span>
-                        </span>
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="pernikahan.php">
-                        <span class="icon"><span class="iconify" data-icon="carbon:partnership" data-width="25" data-height="25"></span></span>
+                    <a href="pernikahan_dashboard.php">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Pernikahan</span>
                     </a>
                 </li>
                 <li>
                     <a href="tempat_ibadah_dashboard.php">
-                        <span class="icon"><span class="iconify" data-icon="carbon:worship-muslim" data-width="25" data-height="25"></span></span>
+                        <span class="icon"><ion-icon name="moon-outline"></ion-icon></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>
                 </li>
@@ -48,21 +47,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><span class="iconify" data-icon="mdi:partnership-outline" data-width="25" data-height="25"></span></span>
-                        <span class="title">Wakaf</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="program_dashboard.php">
                         <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
                         <span class="title">Program</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="login.php">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Keluar</span>
                     </a>
                 </li>
             </ul>
@@ -84,7 +77,7 @@
             <div class="table">
                 <div class="header-tabel">
                     <h1 style="font-size: 20PX; margin-top: 10px; color: #3B3E51; opacity: 60%; font-family: 'poppins', sans-serif; ">Menampilkan Data Semua Madrasah</h1>
-                    <button id="btn-tambah"><ion-icon name="add-circle-outline"></ion-icon>Tambah</button>
+                    <button id="btn-tambah"><ion-icon name="add-circle-outline" style="cursor: pointer;"></ion-icon>Tambah</button>
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal-popup" class="modal">
@@ -123,7 +116,7 @@
                                 </div>
                                 <div class="input4">
                                     <label for="lokasi-madrasah ">Lokasi:</label>
-                                    <textarea name="" id="lokasi-madrasah" style="height: 10rem; width: 24rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
+                                    <textarea name="" id="lokasi-madrasah" style="height: 10rem; width: 23rem; border: 0.5px solid #8f8f96; border-radius: 13px; padding: 10px; box-sizing: border-box; " required></textarea>
                                 </div>
                                 <div class="input5">
                                     <label for="map-madrasah">Embed Map:</label>
@@ -198,7 +191,7 @@
                 </table>
             </div>
         </div>
-        <script src="js_ibadah.js"></script>
+        <script src="js/js_ibadah.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>

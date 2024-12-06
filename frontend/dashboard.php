@@ -1,3 +1,25 @@
+<?php 
+include_once '../backend/function.php';
+
+$currentPeriod = date('Y-m'); 
+
+// Query to get the most recent pernikahan and isbat_nikah counts for the current period
+$query = "SELECT pernikahan, isbat_nikah FROM pernikahan WHERE periode = '$currentPeriod' ORDER BY id DESC LIMIT 1"; 
+$result = mysqli_query($koneksi, $query);
+
+$data = mysqli_fetch_assoc($result);
+
+// Set default values if data is not available
+$totalPernikahan = $data['pernikahan'] ?? 0; 
+$totalIsbat = $data['isbat_nikah'] ?? 0; 
+
+// Prepare response array to send as JSON
+$response = [
+    'totalPernikahan' => $totalPernikahan,
+    'totalIsbat' => $totalIsbat,
+];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard.php">
+                    <a href="?page=dashboard">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
@@ -38,27 +60,27 @@
                     </a>
                 </li>
                 <li>
-                    <a href="tempat_ibadah.php">
+                    <a href="tempat_ibadah_dashboard.php">
                         <span class="icon"><ion-icon name="moon-outline"></ion-icon></span>
                         <span class="title">Tempat Ibadah</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="madrasah_dashboard.php">
                         <span class="icon"><ion-icon name="school-outline"></ion-icon></span>
                         <span class="title">Madrasah</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                        <span class="title">Wakaf</span>
+                    <a href="program_dashboard.php">
+                        <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
+                        <span class="title">Program</span>
                     </a>
                 </li>
                 <li>
                     <a href="login.php">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Keluar</span>
                     </a>
                 </li>
             </ul>
@@ -77,8 +99,8 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="number">348</div>
-                        <div class="cardName">Pernikahan</div>
+                    <span class="number" id="total-pernikahan"><?php echo str_pad($totalPernikahan, 2, '0', STR_PAD_LEFT); ?></span>
+                    <div class="cardName">Pernikahan</div>
                     </div>
 
                     <div class="iconBox">
@@ -87,8 +109,8 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="number">348</div>
-                        <div class="cardName">Isbat Nikah</div>
+                    <span class="number" id="total-isbat"><?php echo str_pad($totalIsbat, 2, '0', STR_PAD_LEFT); ?></span>
+                    <div class="cardName">Isbat Nikah</div>
                     </div>
 
                     <div class="iconBox">
@@ -129,12 +151,121 @@
         </div>
     </div>
 
+                        <!--membuat timer di dashboard ini -->
+                        <?php 
+    if(isset($_GET['page'])) {
+        $page = $_GET['page'];
+        if($page=='dashboard'){
+            include "dashboard.php";
+        }
+    }
+    
+    ?>
+
+    <script>
+ const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.onscroll = function() {
+    toggleScrollButton();
+};
+
+function toggleScrollButton() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollTopBtn.style.display = "block";
+    } else {
+        scrollTopBtn.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+
+$(document).ready(function() {
+$('#form-pernikahan').on('submit', function(e) {
+e.preventDefault(); // Mencegah form untuk submit secara biasa
+
+var formData = $(this).serialize(); // Serialize data dari form
+
+$.ajax({
+    url: 'beranda.php', // Kirim ke pernikahan_dashboard.php
+    method: 'POST',
+    data: formData,
+    success: function(response) {
+        // Setelah berhasil, panggil fetchData() untuk mengambil data terbaru
+        fetchData();
+    },
+    error: function() {
+        alert('Terjadi kesalahan saat menyimpan data');
+    }
+});
+});
+});
+
+// Fungsi untuk mengambil data terbaru
+function fetchData() {
+$.ajax({
+url: 'pernikahan_dashboard.php', // File PHP untuk mengambil data terbaru
+method: 'GET',
+success: function(response) {
+    // Anggap response berisi JSON yang memiliki data terbaru, seperti total pernikahan dan isbat
+    var data = JSON.parse(response);
+
+    // Update angka pada halaman dengan data terbaru
+    $('#total-pernikahan').text(data.totalPernikahan);
+    $('#total-isbat').text(data.totalIsbat);
+
+    // Jalankan animasi transisi angka jika diperlukan
+    animateNumber('total-pernikahan', 0, data.totalPernikahan, 2000);
+    animateNumber('total-isbat', 0, data.totalIsbat, 2000);
+},
+error: function() {
+    alert('Error fetching data');
+}
+});
+}
+
+// Fungsi animasi untuk transisi angka
+function animateNumber(id, startValue, endValue, duration) {
+const element = document.getElementById(id);
+let currentValue = startValue;
+const increment = (endValue - startValue) / (duration / 50000); // Pembagian untuk interval
+const interval = setInterval(() => {
+currentValue += increment;
+if (currentValue >= endValue) {
+    clearInterval(interval); // Hentikan interval jika sudah mencapai angka akhir
+    currentValue = endValue; // Pastikan nilai akhir tercapai
+}
+element.textContent = Math.round(currentValue).toString().padStart(2, '0'); // Update nilai
+}, 100); // Interval setiap 50ms
+}
+
+
+
+function resetTimers() {
+    console.log("Activity detected, resetting timers.");
+    clearTimeout(logoutTimer);
+
+    // Reset timer logout (30 menit)
+    logoutTimer = setTimeout(function() {
+        console.log("User logged out due to inactivity.");
+        window.location.href = "logout.php";
+    }, logoutTimeout);
+}
+
+window.addEventListener('mousemove', resetTimers);
+window.addEventListener('click', resetTimers);
+window.addEventListener('keypress', resetTimers);
+    </script>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
-
-</html>
-
-</html>
+<?php $mysqli->close(); ?>

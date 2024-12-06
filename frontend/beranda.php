@@ -48,9 +48,15 @@ echo json_encode($response); // Return response as JSON
             <div class="dropdown">
                 <a href="#" class="dropdown-btn" id="li">Edukasi</a>
                 <div class="dropdown-content">
+<<<<<<< HEAD
                     <a href="#" id="link">Pranikah</a>
                     <a href="#" id="link">Pernikahan</a>
                     <a href="#" id="link">Wakaf</a>
+=======
+                    <a href="edukasi_pranikah.php" id="link">Pranikah</a>
+                    <a href="edukasi_pernikahan.php" id="link">Pernikahan</a>
+                    <a href="edukasi_wakaf.php" id="link">Wakaf</a>
+>>>>>>> d1b0320a2b421d57ddc7bdf73b92bf084251bdf3
                 </div>
             </div>
             <div class="dropdown">
@@ -225,7 +231,11 @@ echo json_encode($response); // Return response as JSON
     </div>
     <div class="pembatas_2 ">
         <p>Program Kami</p>
+<<<<<<< HEAD
         <a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a>
+=======
+        <a href=""><a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a></a>
+>>>>>>> d1b0320a2b421d57ddc7bdf73b92bf084251bdf3
     </div>
     <div class="program_kami ">
         <div class="program_1 ">
@@ -312,10 +322,68 @@ echo json_encode($response); // Return response as JSON
         }
 
 
-        //real time for value spannn 
+     
+$(document).ready(function() {
+    $('#form-pernikahan').on('submit', function(e) {
+        e.preventDefault(); // Mencegah form untuk submit secara biasa
 
-    
+        var formData = $(this).serialize(); // Serialize data dari form
+
+        $.ajax({
+            url: 'beranda.php', // Kirim ke pernikahan_dashboard.php
+            method: 'POST',
+            data: formData,
+            success: function(response) {
+                // Setelah berhasil, panggil fetchData() untuk mengambil data terbaru
+                fetchData();
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat menyimpan data');
+            }
+        });
+    });
+});
+
+// Fungsi untuk mengambil data terbaru
+function fetchData() {
+    $.ajax({
+        url: 'pernikahan_dashboard.php', // File PHP untuk mengambil data terbaru
+        method: 'GET',
+        success: function(response) {
+            // Anggap response berisi JSON yang memiliki data terbaru, seperti total pernikahan dan isbat
+            var data = JSON.parse(response);
+
+            // Update angka pada halaman dengan data terbaru
+            $('#total-pernikahan').text(data.totalPernikahan);
+            $('#total-isbat').text(data.totalIsbat);
+
+            // Jalankan animasi transisi angka jika diperlukan
+            animateNumber('total-pernikahan', 0, data.totalPernikahan, 2000);
+            animateNumber('total-isbat', 0, data.totalIsbat, 2000);
+        },
+        error: function() {
+            alert('Error fetching data');
+        }
+    });
+}
+
+// Fungsi animasi untuk transisi angka
+function animateNumber(id, startValue, endValue, duration) {
+    const element = document.getElementById(id);
+    let currentValue = startValue;
+    const increment = (endValue - startValue) / (duration / 50000); // Pembagian untuk interval
+    const interval = setInterval(() => {
+        currentValue += increment;
+        if (currentValue >= endValue) {
+            clearInterval(interval); // Hentikan interval jika sudah mencapai angka akhir
+            currentValue = endValue; // Pastikan nilai akhir tercapai
+        }
+        element.textContent = Math.round(currentValue).toString().padStart(2, '0'); // Update nilai
+    }, 100); // Interval setiap 50ms
+}
+
     </script>
+
 
     <script src="js/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
