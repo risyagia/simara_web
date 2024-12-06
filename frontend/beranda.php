@@ -44,7 +44,21 @@ echo json_encode($response); // Return response as JSON
         <p>Sistem Manajemen Data Religi dan Agama</p>
         <div class="navbar">
             <a href="#" id="li">Beranda</a>
-            <a href="#" id="li">Tentang</a>
+            <a href="#" id="li">Profil</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn" id="li">Edukasi</a>
+                <div class="dropdown-content">
+<<<<<<< HEAD
+                    <a href="#" id="link">Pranikah</a>
+                    <a href="#" id="link">Pernikahan</a>
+                    <a href="#" id="link">Wakaf</a>
+=======
+                    <a href="edukasi_pranikah.php" id="link">Pranikah</a>
+                    <a href="edukasi_pernikahan.php" id="link">Pernikahan</a>
+                    <a href="edukasi_wakaf.php" id="link">Wakaf</a>
+>>>>>>> d1b0320a2b421d57ddc7bdf73b92bf084251bdf3
+                </div>
+            </div>
             <div class="dropdown">
                 <a href="#" class="dropdown-btn" id="li">Layanan</a>
                 <div class="dropdown-content">
@@ -55,7 +69,7 @@ echo json_encode($response); // Return response as JSON
                 </div>
             </div>
             <a href="#" id="li">Program</a>
-            <a href="#" id="li">Bantuan</a>
+
         </div>
         <div class="login_staff">
             <a href="login.php">Masuk</a>
@@ -128,6 +142,7 @@ echo json_encode($response); // Return response as JSON
     </div>
     <div class="pembatas ">
         <p>Alur Pendaftaran Pernikahan</p>
+        <a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a>
     </div>
     <div class="alur_pernikahan_row1">
         <div class="langkah_1">
@@ -216,7 +231,11 @@ echo json_encode($response); // Return response as JSON
     </div>
     <div class="pembatas_2 ">
         <p>Program Kami</p>
-        <a href="">Lihat Semua</a>
+<<<<<<< HEAD
+        <a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a>
+=======
+        <a href=""><a href=""><ion-icon name="chevron-forward-outline"></ion-icon></a></a>
+>>>>>>> d1b0320a2b421d57ddc7bdf73b92bf084251bdf3
     </div>
     <div class="program_kami ">
         <div class="program_1 ">
@@ -367,7 +386,8 @@ function animateNumber(id, startValue, endValue, duration) {
 
 
     <script src="js/script.js"></script>
-    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
